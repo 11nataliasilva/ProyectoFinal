@@ -19,11 +19,11 @@ jobs:
           java-version: '17'
           
       # Construccion de jars
-      - name: Build Micro Client
-        run: mvn -f MicroserviceClient/pom.xml clean install -DskipTests=true
+      - name: Build Micro Worker
+        run: mvn -f MicroserviceWorker/pom.xml clean install -DskipTests=true
       
-      - name: Build Micro Item
-        run: mvn -f MicroserviceItem/pom.xml clean install -DskipTests=true
+      - name: Build Micro Product
+        run: mvn -f MicroserviceProduct/pom.xml clean install -DskipTests=true
         
       - name: Build Micro Config
         run: mvn -f MicroserviceConfig/pom.xml clean install -DskipTests=true
@@ -32,7 +32,7 @@ jobs:
         run: mvn -f MicroserviceEureka/pom.xml clean install -DskipTests=true
 
       # Construccion de imagenes
-      - name: Build image Client
+      - name: Build image Worker
         run: docker build -t ${{ secrets.DOCKER_USERNAME }}/mes:client .
         working-directory: MicroserviceClient
         
@@ -43,7 +43,7 @@ jobs:
       - name: Build image eureka
         run: docker build -t ${{ secrets.DOCKER_USERNAME }}/mes:eureka .
         working-directory: MicroserviceEureka
-      - name: Build image item
+      - name: Build image Product
         run: docker build -t ${{ secrets.DOCKER_USERNAME }}/mes:item .
         working-directory: MicroserviceItem
 
