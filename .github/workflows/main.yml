@@ -33,19 +33,19 @@ jobs:
 
       # Construccion de imagenes
       - name: Build image Worker
-        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/mes:worker .
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/mess:worker .
         working-directory: MicroserviceWorker
         
       - name: Build image config
-        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/mes:config .
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/mess:config .
         working-directory: MicroserviceConfig
         
       - name: Build image eureka
-        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/mes:eureka .
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/mess:eureka .
         working-directory: MicroserviceEureka
         
       - name: Build image Product
-        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/mes:product .
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/mess:product .
         working-directory: MicroserviceProduct
 
       #Login docker
@@ -59,7 +59,7 @@ jobs:
       #Envio de imagenes a docker hub
       - name: Push Docker image to Docker Hub
         run: |
-          docker push ${{ secrets.DOCKER_USERNAME }}/mes:worker
-          docker push ${{ secrets.DOCKER_USERNAME }}/mes:config
-          docker push ${{ secrets.DOCKER_USERNAME }}/mes:eureka
-          docker push ${{ secrets.DOCKER_USERNAME }}/mes:product
+          docker push ${{ secrets.DOCKER_USERNAME }}/mess:worker
+          docker push ${{ secrets.DOCKER_USERNAME }}/mess:config
+          docker push ${{ secrets.DOCKER_USERNAME }}/mess:eureka
+          docker push ${{ secrets.DOCKER_USERNAME }}/mess:product
